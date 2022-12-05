@@ -1,7 +1,8 @@
 const name = "foo"
 const age = 18
+
 function sayHello() {
-  console.log("sayHello")
+  console.log("sayHello——jiejie")
 }
 
 // 1.在开发中使用的很少
@@ -27,6 +28,6 @@ module.exports = {
   sayHello
 }
 
+// 这样写这个东西就没有意义了
 // exports.name = "哈哈哈哈"
-// module.exports.name = "哈哈哈哈"
-
+module.exports.name = "module.exports.name----改了哈哈哈哈"
