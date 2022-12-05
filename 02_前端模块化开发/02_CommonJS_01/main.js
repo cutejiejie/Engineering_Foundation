@@ -1,15 +1,16 @@
 // 1.直接获取导出的对象, 从对象中获取属性
 // const util = require("./util.js")
+// console.log("util------", util)
 
 // console.log(util.UTIL_NAME)
 // console.log(util.formatCount())
 // console.log(util.formatDate())
 
 // 2.导入对象之后, 直接对其进行解构
-// const { 
+// const {
 //   UTIL_NAME,
-//   formatCount, 
-//   formatDate 
+//   formatCount,
+//   formatDate
 // } = require("./util.js")
 
 // console.log(UTIL_NAME)
@@ -17,7 +18,7 @@
 // console.log(formatDate())
 
 
-// 3.探讨require的本质
+// // 3.探讨require的本质
 const bar = require("./bar.js")
 console.log(bar.name) // bar
 
@@ -28,5 +29,5 @@ console.log(bar.name) // bar
 
 // 2s之后通过bar修改了name
 setTimeout(() => {
-  bar.name = "kobe"
+  bar.name = "在导入的地方修改__kobe"
 }, 2000)
