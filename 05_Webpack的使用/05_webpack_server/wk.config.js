@@ -1,8 +1,14 @@
 const path = require("path")
-const { VueLoaderPlugin } = require("vue-loader/dist/index")
-const { CleanWebpackPlugin } = require("clean-webpack-plugin")
+const {
+  VueLoaderPlugin
+} = require("vue-loader/dist/index")
+const {
+  CleanWebpackPlugin
+} = require("clean-webpack-plugin")
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const { DefinePlugin } = require("webpack")
+const {
+  DefinePlugin
+} = require("webpack")
 
 module.exports = {
   mode: "development",
@@ -22,19 +28,18 @@ module.exports = {
   devServer: {
     hot: true,
     // host: "0.0.0.0",
-    // port: 8888,
-    // open: true
-    // compress: true
+    port: 8888,
+    open: true,
+    compress: true
   },
   module: {
-    rules: [
-      {
+    rules: [{
         test: /\.css$/,
-        use: [ "style-loader", "css-loader", "postcss-loader" ]
+        use: ["style-loader", "css-loader", "postcss-loader"]
       },
       {
         test: /\.less$/,
-        use: [ "style-loader", "css-loader", "less-loader", "postcss-loader" ]
+        use: ["style-loader", "css-loader", "less-loader", "postcss-loader"]
       },
       {
         test: /\.(png|jpe?g|svg|gif)$/,
@@ -65,17 +70,15 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        use: [
-          { 
-            loader: "babel-loader", 
-            // options: {
-            //   plugins: [
-            //     "@babel/plugin-transform-arrow-functions",
-            //     "@babel/plugin-transform-block-scoping"
-            //   ]
-            // } 
-          }
-        ]
+        use: [{
+          loader: "babel-loader",
+          // options: {
+          //   plugins: [
+          //     "@babel/plugin-transform-arrow-functions",
+          //     "@babel/plugin-transform-block-scoping"
+          //   ]
+          // } 
+        }]
       },
       {
         test: /\.vue$/,

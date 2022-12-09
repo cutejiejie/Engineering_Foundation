@@ -1,9 +1,13 @@
-import { createApp } from 'vue'
+import {
+  createApp
+} from 'vue'
 import Hello from './vue_demo/Hello'
 
 import "./utils/abc/cba/nba/why/test"
 
-import { sum } from './utils/math'
+import {
+  sum
+} from './utils/math'
 import "./utils/demo.js"
 // import "./component/cpns"
 
@@ -47,4 +51,3 @@ if (module.hot) {
     console.log("demo模块发生了更新")
   })
 }
-
