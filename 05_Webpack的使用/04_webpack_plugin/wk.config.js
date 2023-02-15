@@ -1,33 +1,36 @@
-const path = require("path")
-const { VueLoaderPlugin } = require("vue-loader/dist/index")
-const { CleanWebpackPlugin } = require("clean-webpack-plugin")
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const { DefinePlugin } = require("webpack")
+const path = require("path");
+const { VueLoaderPlugin } = require("vue-loader/dist/index");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { DefinePlugin } = require("webpack");
 
 module.exports = {
-  mode: "production",
+  // 打包上线的环境
+  // mode: "production",
+  // 开发环境
+  mode: "development",
   entry: "./src/main.js",
   output: {
     filename: "bundle.js",
     path: path.resolve(__dirname, "./build"),
-    clean: true
+    clean: true,
     // assetModuleFilename: "abc.png"
   },
   resolve: {
     extensions: [".js", ".json", ".vue", ".jsx", ".ts", ".tsx"],
     alias: {
-      utils: path.resolve(__dirname, "./src/utils")
-    }
+      utils: path.resolve(__dirname, "./src/utils"),
+    },
   },
   module: {
     rules: [
       {
         test: /\.css$/,
-        use: [ "style-loader", "css-loader", "postcss-loader" ]
+        use: ["style-loader", "css-loader", "postcss-loader"],
       },
       {
         test: /\.less$/,
-        use: [ "style-loader", "css-loader", "less-loader", "postcss-loader" ]
+        use: ["style-loader", "css-loader", "less-loader", "postcss-loader"],
       },
       {
         test: /\.(png|jpe?g|svg|gif)$/,
@@ -45,48 +48,51 @@ module.exports = {
         type: "asset",
         parser: {
           dataUrlCondition: {
-            maxSize: 60 * 1024
-          }
+            maxSize: 60 * 1024,
+          },
         },
         generator: {
           // 占位符
           // name: 指向原来的图片名称
           // ext: 扩展名
           // hash: webpack生成的hash
-          filename: "img/[name]_[hash:8][ext]"
-        }
+          filename: "img/[name]_[hash:8][ext]",
+        },
       },
       {
         test: /\.js$/,
         use: [
-          { 
-            loader: "babel-loader", 
+          {
+            loader: "babel-loader",
             // options: {
             //   plugins: [
             //     "@babel/plugin-transform-arrow-functions",
             //     "@babel/plugin-transform-block-scoping"
             //   ]
-            // } 
-          }
-        ]
+            // }
+          },
+        ],
       },
       {
         test: /\.vue$/,
-        loader: "vue-loader"
-      }
-    ]
+        loader: "vue-loader",
+      },
+    ],
   },
   plugins: [
+    // 插件都是一个类
     new VueLoaderPlugin(),
     // new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: "电商项目",
-      template: "./index.html"
+      title: "jiejie215",
+      // 自己指定模板，当前目录下的index.html,会根据这个模板生成.html文件。
+      template: "./index.html",
     }),
     new DefinePlugin({
+      // 这里默认代码当成js里的代码进行执行。
       BASE_URL: "'./'",
-      coderwhy: "'why'",
-      counter: "123"
-    })
-  ]
-}
+      name: "'jie'",
+      age: "23",
+    }),
+  ],
+};
